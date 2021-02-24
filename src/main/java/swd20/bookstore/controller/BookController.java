@@ -29,7 +29,7 @@ public class BookController {
 	
     //palauttaa tyhjän kirjan lisäyslomakkeen
     @RequestMapping(value = "/add") 
-    public String addStudent(Model model){
+    public String addBook(Model model){
     	model.addAttribute("book", new Book());
         return "addbook"; //addbook.html
     }     
