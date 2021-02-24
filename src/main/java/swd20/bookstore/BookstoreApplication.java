@@ -10,6 +10,8 @@ import org.springframework.context.annotation.Bean;
 
 import swd20.bookstore.domain.Book;
 import swd20.bookstore.domain.BookRepository;
+import swd20.bookstore.domain.Category;
+import swd20.bookstore.domain.CategoryRepository;
 
 @SpringBootApplication
 public class BookstoreApplication {
@@ -20,15 +22,25 @@ public class BookstoreApplication {
 	}
 
 	@Bean
-	public CommandLineRunner booktDemo(BookRepository bookrepository) {
+	public CommandLineRunner booktDemo(BookRepository bookrepository, CategoryRepository categoryrepository) {
 		return (args) -> {
-			log.info("save a couple of BOOKS");
+			log.info("save a couple of BOOKS with CATEGORIES");
+			Category category1 = new Category("Education");
+			categoryrepository.save(category1);
+			Category category2 = new Category("Horror");
+			categoryrepository.save(category2);
+			Category category3 = new Category("Sci-fi");
+			categoryrepository.save(category3);
 			bookrepository.save(new Book("Testikirja1", "Ernest Hemingway", 1929, "1232323-21", 19.90));
 			bookrepository.save(new Book("Testikirja2", "George Orwell", 1945, "2212343-5", 16.66));	
 			
 			log.info("fetch all BOOKS");
-			for (Book book : bookrepository.findAll()) {
-				log.info(book.toString());
+			for (Book b : bookrepository.findAll()) {
+				log.info(b.toString());
+			}
+			log.info("fetch all CATEGORIES");
+			for (Category c : categoryrepository.findAll()) {
+				log.info(c.toString());
 			}
 
 		};
