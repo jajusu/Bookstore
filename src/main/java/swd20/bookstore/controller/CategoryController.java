@@ -22,7 +22,7 @@ public class CategoryController {
     }
     
     //palauttaa tyhjän kategorian lisäyslomakkeen
-    @RequestMapping(value = "/addCategory") 
+    @RequestMapping(value = "/addcategory") 
     public String addCategory(Model model){
     	model.addAttribute("category", new Category());
         return "addcategory"; //addcategory.html
