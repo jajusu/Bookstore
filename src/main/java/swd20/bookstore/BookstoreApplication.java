@@ -31,8 +31,8 @@ public class BookstoreApplication {
 			categoryrepository.save(category2);
 			Category category3 = new Category("Sci-fi");
 			categoryrepository.save(category3);
-			bookrepository.save(new Book("Testikirja1", "Ernest Hemingway", 1929, "1232323-21", 19.90));
-			bookrepository.save(new Book("Testikirja2", "George Orwell", 1945, "2212343-5", 16.66));	
+			bookrepository.save(new Book("Testikirja1", "Ernest Hemingway", 1929, "1232323-21", 19.90, category1));
+			bookrepository.save(new Book("Testikirja2", "George Orwell", 1945, "2212343-5", 16.66, category3));	
 			
 			log.info("fetch all BOOKS");
 			for (Book b : bookrepository.findAll()) {

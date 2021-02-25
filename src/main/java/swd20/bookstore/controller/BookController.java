@@ -9,11 +9,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import swd20.bookstore.domain.Book;
 import swd20.bookstore.domain.BookRepository;
+import swd20.bookstore.domain.CategoryRepository;
 
 @Controller //Spring-alustaohjelma Controller-luokasta olion sovelluksen käynnistyessä
 public class BookController {
 	@Autowired
 	private BookRepository bookRepository;
+	@Autowired
+	private CategoryRepository categoryrepository;
 	
 	@RequestMapping(value = "/index", method= RequestMethod.GET) //http://localhost:8080/index
 	public String index() {
@@ -31,6 +34,7 @@ public class BookController {
     @RequestMapping(value = "/add") 
     public String addBook(Model model){
     	model.addAttribute("book", new Book());
+    	model.addAttribute("categories", categoryrepository.findAll());
         return "addbook"; //addbook.html
     }     
     
@@ -51,6 +55,7 @@ public class BookController {
     //palauttaa kirjan muokkauslomakkeen
     @RequestMapping(value = "/update/{id}") 
     public String updatebook(@PathVariable(value="id") Long bookId, Model model){
+    	model.addAttribute("categories", categoryrepository.findAll());
     	model.addAttribute("book", bookRepository.findById(bookId));
         return "updatebook"; //updatebook.html
     }     

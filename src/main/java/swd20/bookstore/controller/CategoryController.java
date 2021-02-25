@@ -32,7 +32,7 @@ public class CategoryController {
     @RequestMapping(value = "/saveCategory", method = RequestMethod.POST)
     public String save(Category category){
         categoryRepository.save(category);
-        return "redirect:categorylist";
+        return "redirect:booklist"; //Muuta tähän categorylist, jos haluat että ohjaa sinne
     }    
 	
 
