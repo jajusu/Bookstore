@@ -25,14 +25,18 @@ public class BookstoreApplication {
 	public CommandLineRunner booktDemo(BookRepository bookrepository, CategoryRepository categoryrepository) {
 		return (args) -> {
 			log.info("save a couple of BOOKS with CATEGORIES");
-			Category category1 = new Category("Education");
+			Category category1 = new Category("");
 			categoryrepository.save(category1);
 			Category category2 = new Category("Horror");
 			categoryrepository.save(category2);
 			Category category3 = new Category("Sci-fi");
 			categoryrepository.save(category3);
-			bookrepository.save(new Book("Testikirja1", "Ernest Hemingway", 1929, "1232323-21", 19.90, category1));
-			bookrepository.save(new Book("Testikirja2", "George Orwell", 1945, "2212343-5", 16.66, category3));	
+			Category category4 = new Category("Education");
+			categoryrepository.save(category4);
+			bookrepository.save(new Book("Toisinajattelijan päiväkirjasta", "Penkki Linkola", 1979, "1232323-21", 19.90, category2));
+			bookrepository.save(new Book("Eläinten vallankumous", "George Orwell", 1945, "2212343-5", 16.66, category3));	
+			bookrepository.save(new Book("Ohjelmoinnin perusteet", "Pekka Python", 2020, "5656563-5", 9.90));	
+
 			
 			log.info("fetch all BOOKS");
 			for (Book b : bookrepository.findAll()) {

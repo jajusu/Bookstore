@@ -28,7 +28,7 @@
     	    <td th:text="${book.year}"></td>
     		<td th:text="${book.isbn}"></td>
     		<td th:text="${book.price}"></td>
-    		<td th:text="${book.category.name}"></td> 		
+    		<td th:text="${book.category} ? ${book.category.name} : '  '"></td> 		
  			<td><a  class="btn btn-danger"  th:href="@{/delete/{id}(id=${book.bookid})}">Delete</a></td>
  			<td><a class="btn btn-info" th:href="@{/update/{id}(id=${book.bookid})}">Update</a></td>  		
     	</tr>

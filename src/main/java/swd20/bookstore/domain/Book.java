@@ -7,6 +7,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 public class Book {
 	@Id
@@ -18,11 +20,22 @@ public class Book {
 	private String isbn;
 	private double price;
 	@ManyToOne
+	// @JsonIgnoreProperties - one way to avoid infinite loop during JSON serialization/deserialization with bidirectional relationships
+    @JsonIgnoreProperties ("books") 
 	@JoinColumn(name="categoryid")
 	private Category category;
 	
 	public Book() {
 		
+	}
+	
+	public Book(String title, String author, int year, String isbn, double price) {
+		super();
+		this.title = title;
+		this.author = author;
+		this.year = year;
+		this.isbn = isbn;
+		this.price = price;
 	}
 	
 	public Book(String title, String author, int year, String isbn, double price, Category category) {
@@ -40,7 +53,6 @@ public class Book {
 		return "Book [bookid=" + bookid + ", title=" + title + ", author=" + author + ", year=" + year + ", isbn="
 				+ isbn + ", price=" + price + ", category=" + category + "]";
 	}
-	
 	
 
 	public long getBookid() {
