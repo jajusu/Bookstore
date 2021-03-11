@@ -45,6 +45,13 @@ public class BookController {
     	return bookRepository.save(book);
     }
 	
+    //booklist restin kautta
+    @RequestMapping(value="/booklist2", method = RequestMethod.GET)
+    public String booklist(Model model) {
+    	model.addAttribute("books", bookRepository.findAll());
+    	return "booklist";
+    }
+    
 	//testi
 	@RequestMapping(value = "/index", method= RequestMethod.GET) //http://localhost:8080/index
 	public String index() {
