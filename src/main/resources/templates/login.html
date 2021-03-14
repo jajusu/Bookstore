@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <title>Login page</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+    <style type='text/css'>
+	    label {
+	    	width: auto;
+	    	min-width: 100px;
+		}
+		.center {
+		 	margin: auto;
+			width: 50%;
+			padding: 10px;
+		}
+		.kontti{
+			background-color: #DCDCDC;
+		}
+	
+	</style>
+	
+</head>
+<body>
+<div class="center kontti">
+
+	<h1 class="center" text-align="center">Login</h1>
+	<div class="center"th:if="${param.error}">
+		Name or password are not valid.
+	</div>
+	<div class="center" th:if="${param.logout}">
+		Logged out.
+	</div>
+	<form class="center" th:action="@{/login}" method="post">
+		<div><label >Username: </label><input type="text" name="username"/></div>
+		<div><label >Password: </label><input type="password" name="password"/></div>
+		<div><input type="submit" value="Sign In"/></div>
+	</form>
+</div>
+</body>
+</html>

@@ -25,6 +25,12 @@ public class BookController {
 	@Autowired
 	private CategoryRepository categoryrepository;
 	
+	//Oma login EI TOIMI
+	@RequestMapping(value="/login")
+	public String login() {
+		return "login";
+	}
+	
 	// RESTful service to get all books
     //JAva-kielinen Student-luokan oliolista muunnetaan JSON-opiskelijalistaksi ja 
     //lähetetään web-selaimelle vastauksena
@@ -32,6 +38,8 @@ public class BookController {
     public @ResponseBody List<Book> bookListRest() {	
         return (List<Book>) bookRepository.findAll();
     }
+    
+    //voi tehdä myös näi RequestMappingin sijaan: @GetMapping ("books/{id}")
     
 	// RESTful service to get book by id
     @RequestMapping(value="/books/{id}", method = RequestMethod.GET)
