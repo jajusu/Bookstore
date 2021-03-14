@@ -12,6 +12,8 @@ import swd20.bookstore.domain.Book;
 import swd20.bookstore.domain.BookRepository;
 import swd20.bookstore.domain.Category;
 import swd20.bookstore.domain.CategoryRepository;
+import swd20.bookstore.domain.User;
+import swd20.bookstore.domain.UserRepository;
 
 @SpringBootApplication
 public class BookstoreApplication {
@@ -22,7 +24,7 @@ public class BookstoreApplication {
 	}
 
 	@Bean
-	public CommandLineRunner booktDemo(BookRepository bookrepository, CategoryRepository categoryrepository) {
+	public CommandLineRunner booktDemo(BookRepository bookrepository, CategoryRepository categoryrepository, UserRepository userrepository) {
 		return (args) -> {
 			log.info("save a couple of BOOKS with CATEGORIES");
 			Category category1 = new Category("");
@@ -33,9 +35,16 @@ public class BookstoreApplication {
 			categoryrepository.save(category3);
 			Category category4 = new Category("Education");
 			categoryrepository.save(category4);
+			
 			bookrepository.save(new Book("Toisinajattelijan päiväkirjasta", "Penkki Linkola", 1979, "1232323-21", 19.90, category2));
 			bookrepository.save(new Book("Eläinten vallankumous", "George Orwell", 1945, "2212343-5", 16.66, category3));	
 			bookrepository.save(new Book("Ohjelmoinnin perusteet", "Pekka Python", 2020, "5656563-5", 9.90));	
+			
+			// Create users: admin/admin user/user
+			User user1 = new User("user", "$2a$10$fXA4jwmhd1su66D1mAsz7up4MfogUg8JWR9cvW3U8vPtVzGByiWJy", "USER");
+			User user2 = new User("admin", "$2a$10$g9iNYmjd3V1hUA/YP90Fyek.WFO.D6qAyprbEFusEFLzW.wRjnK7G", "ADMIN");
+			userrepository.save(user1);
+			userrepository.save(user2);
 
 			
 			log.info("fetch all BOOKS");

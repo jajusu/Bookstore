@@ -8,7 +8,6 @@
 <style>
 	body{
 	  padding-top: 25px;
-
 	}
 </style>
 </head>
@@ -17,15 +16,15 @@
 <div class="container testi">
 	<div class="row">
 		<div class="col-md-4">
-				<h1>Books</h1>
+			<h1>Books</h1>
 		</div>
 		<div class="col-md-4">
-				<h3 th:inline="text">Welcome [[${#httpServletRequest.remoteUser}]]</h3>
+			<h3 th:inline="text">Welcome [[${#httpServletRequest.remoteUser}]]</h3>
 		</div>
 		<div class="col-md-4">
-				<form th:action="@{/logout}" method="post">
-					<input type="submit" value="Sign Out" class="btn btn-danger"/>
-				</form>
+			<form th:action="@{/logout}" method="post">
+				<input type="submit" value="Sign Out" class="btn btn-danger"/>
+			</form>
 		</div>
 	
     <table class="table table-striped">
@@ -37,8 +36,8 @@
 		    <th>ISBN</th>
 		    <th>Price</th>
 		    <th>Category</th>
-		    <th sec:authorize="hasRole('ADMIN')"> </th>
-		    <th sec:authorize="hasRole('ADMIN')"> </th>
+		    <th sec:authorize="hasAuthority('ADMIN')"> </th>
+		    <th sec:authorize="hasAuthority('ADMIN')"> </th>
 		</tr>
 		
     	<tr th:each = "book : ${books}">
@@ -49,15 +48,15 @@
     		<td th:text="${book.isbn}"></td>
     		<td th:text="${book.price}"></td>
     		<td th:text="${book.category} ? ${book.category.name} : '  '"></td> 		
- 			<td sec:authorize="hasRole('ADMIN')"><a  class="btn btn-danger"  th:href="@{/delete/{id}(id=${book.bookid})}">Delete</a></td>
- 			<td sec:authorize="hasRole('ADMIN')"><a class="btn btn-info" th:href="@{/update/{id}(id=${book.bookid})}">Update</a></td>  		
+ 			<td sec:authorize="hasAuthority('ADMIN')"><a  class="btn btn-danger"  th:href="@{/delete/{id}(id=${book.bookid})}">Delete</a></td>
+ 			<td sec:authorize="hasAuthority('ADMIN')"><a class="btn btn-info" th:href="@{/update/{id}(id=${book.bookid})}">Update</a></td>  		
     	</tr>
      </table>
      
-     	</div>
+     </div>
      
 	 <a class="btn btn-success" href="/add">Add book </a> 
-	  <a class="btn btn-success" href="/addcategory">Add category </a>
+	 <a class="btn btn-success" href="/addcategory">Add category </a>
 
 </div>	  
 </body>

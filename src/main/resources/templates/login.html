@@ -7,37 +7,47 @@
     <style type='text/css'>
 	    label {
 	    	width: auto;
-	    	min-width: 100px;
+	    	min-width: 20px;
 		}
 		.center {
 		 	margin: auto;
 			width: 50%;
-			padding: 10px;
+			padding: 5px;
 		}
 		.kontti{
-			background-color: #DCDCDC;
+			background-color: #A9A9A9;
 		}
 		.formi{
 			background-color:#E8E8E8;
 		}
-	
+		.centerText{
+			text-align:center;
+		}
+		input{
+			min-width: 20px;
+			width: auto;
+		}
+		html, body {
+    		height: 100%;
+    		background-color:#A9A9A9;
+		}
 	</style>
 	
 </head>
 <body>
-<div class="center kontti">
+<div class="center kontti container">
 
-	<h1 class="center formi" text-align="center">Login</h1>
-	<div class="center formi"th:if="${param.error}">
+	<h1 class="center formi centerText" >Login</h1>
+	<div class="center formi centerText"th:if="${param.error}">
 		Name or password are not valid.
 	</div>
-	<div class="center formi" th:if="${param.logout}">
+	<div class="center formi centerText" th:if="${param.logout}">
 		Logged out.
 	</div>
 	<form class="center formi" th:action="@{/login}" method="post">
-		<div><label >Username: </label><input type="text" name="username"/></div>
-		<div><label >Password: </label><input type="password" name="password"/></div>
-		<div><input type="submit" value="Sign In"/></div>
+		<div class="center"><label >Username: </label><input type="text" name="username"/></div>
+		<div class="center"><label >Password: </label><input type="password" name="password"/></div>
+		<div class="center"><input type="submit" value="Sign In"/></div>
 	</form>
 </div>
 </body>
