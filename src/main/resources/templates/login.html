@@ -17,6 +17,9 @@
 		.kontti{
 			background-color: #DCDCDC;
 		}
+		.formi{
+			background-color:#E8E8E8;
+		}
 	
 	</style>
 	
@@ -24,14 +27,14 @@
 <body>
 <div class="center kontti">
 
-	<h1 class="center" text-align="center">Login</h1>
-	<div class="center"th:if="${param.error}">
+	<h1 class="center formi" text-align="center">Login</h1>
+	<div class="center formi"th:if="${param.error}">
 		Name or password are not valid.
 	</div>
-	<div class="center" th:if="${param.logout}">
+	<div class="center formi" th:if="${param.logout}">
 		Logged out.
 	</div>
-	<form class="center" th:action="@{/login}" method="post">
+	<form class="center formi" th:action="@{/login}" method="post">
 		<div><label >Username: </label><input type="text" name="username"/></div>
 		<div><label >Password: </label><input type="password" name="password"/></div>
 		<div><input type="submit" value="Sign In"/></div>

@@ -24,10 +24,9 @@
 		</div>
 		<div class="col-md-4">
 				<form th:action="@{/logout}" method="post">
-					<input type="submit" value="Sign Out" class="btn btn-sm btn-danger"/>
+					<input type="submit" value="Sign Out" class="btn btn-danger"/>
 				</form>
 		</div>
-	</div>
 	
     <table class="table table-striped">
 		<tr>
@@ -54,6 +53,9 @@
  			<td sec:authorize="hasRole('ADMIN')"><a class="btn btn-info" th:href="@{/update/{id}(id=${book.bookid})}">Update</a></td>  		
     	</tr>
      </table>
+     
+     	</div>
+     
 	 <a class="btn btn-success" href="/add">Add book </a> 
 	  <a class="btn btn-success" href="/addcategory">Add category </a>
 

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -90,13 +91,15 @@ public class BookController {
 
     //poistaa kirjan id-arvon perusteella tietokannasta
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+    @PreAuthorize("hasRole('ADMIN')")
     public String deleteBook(@PathVariable(value="id") Long bookId) {
     	bookRepository.deleteById(bookId);
         return "redirect:../booklist"; //..vie hierkiassa alaspäin ja sen jälkeen /booklist
     }
     
     //palauttaa kirjan muokkauslomakkeen
-    @RequestMapping(value = "/update/{id}") 
+    @RequestMapping(value = "/update/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public String updatebook(@PathVariable(value="id") Long bookId, Model model){
     	model.addAttribute("categories", categoryrepository.findAll());
     	model.addAttribute("book", bookRepository.findById(bookId));
