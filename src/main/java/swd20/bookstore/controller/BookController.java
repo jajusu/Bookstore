@@ -26,7 +26,7 @@ public class BookController {
 	@Autowired
 	private CategoryRepository categoryrepository;
 	
-	//Oma login EI TOIMI
+	//Oma login
 	@RequestMapping(value="/login")
 	public String login() {
 		return "login";
