@@ -36,10 +36,9 @@ public class CategoryController {
     
     // RESTful service to save new category
     @RequestMapping(value="/categories", method = RequestMethod.POST)
-    public @ResponseBody Category saveCategoryRest(@RequestBody Category department) {	
-    	return categoryRepository.save(department);
+    public @ResponseBody Category saveCategoryRest(@RequestBody Category category) {	
+    	return categoryRepository.save(category);
     }
-	
 	
 	
 	//hakee kaikki kategoriat 
@@ -57,7 +56,7 @@ public class CategoryController {
     }     
     
     //vastaanottaa kategorialomakkeen tiedot ja tallentaa ne tietokantaan
-    @RequestMapping(value = "/saveCategory", method = RequestMethod.POST)
+    @RequestMapping(value = "/savecategory", method = RequestMethod.POST)
     public String save(Category category){
         categoryRepository.save(category);
         return "redirect:booklist"; //Muuta tähän categorylist, jos haluat että ohjaa sinne

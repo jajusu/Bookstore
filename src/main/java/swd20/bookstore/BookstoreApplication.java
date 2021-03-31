@@ -36,7 +36,7 @@ public class BookstoreApplication {
 			Category category4 = new Category("Education");
 			categoryrepository.save(category4);
 			
-			bookrepository.save(new Book("Toisinajattelijan päiväkirjasta", "Penkki Linkola", 1979, "1232323-21", 19.90, category2));
+			bookrepository.save(new Book("Toisinajattelijan päiväkirjasta", "Pentti Linkola", 1979, "1232323-21", 19.90, category4));
 			bookrepository.save(new Book("Eläinten vallankumous", "George Orwell", 1945, "2212343-5", 16.66, category3));	
 			bookrepository.save(new Book("Ohjelmoinnin perusteet", "Pekka Python", 2020, "5656563-5", 9.90));	
 			

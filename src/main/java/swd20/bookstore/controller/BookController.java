@@ -24,7 +24,7 @@ public class BookController {
 	@Autowired
 	private BookRepository bookRepository;
 	@Autowired
-	private CategoryRepository categoryrepository;
+	private CategoryRepository categoryRepository;
 	
 	//Oma login
 	@RequestMapping(value="/login")
@@ -78,7 +78,7 @@ public class BookController {
     @RequestMapping(value = "/add") 
     public String addBook(Model model){
     	model.addAttribute("book", new Book());
-    	model.addAttribute("categories", categoryrepository.findAll());
+    	model.addAttribute("categories", categoryRepository.findAll());
         return "addbook"; //addbook.html
     }     
     
@@ -101,7 +101,7 @@ public class BookController {
     @RequestMapping(value = "/update/{id}")
     @PreAuthorize("hasAuthority('ADMIN')")
     public String updatebook(@PathVariable(value="id") Long bookId, Model model){
-    	model.addAttribute("categories", categoryrepository.findAll());
+    	model.addAttribute("categories", categoryRepository.findAll());
     	model.addAttribute("book", bookRepository.findById(bookId));
         return "updatebook"; //updatebook.html
     }     
